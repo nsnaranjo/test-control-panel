@@ -1,0 +1,128 @@
+@use "../../../../../styles.scss" as *;
+
+.table-container {
+  padding: 0 20px 15px 20px;
+  border: 2px solid map-get($map: $bgColors, $key: blue-general);
+  border-radius: 15px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    position: relative;
+    padding-bottom: 8px;
+
+    th {
+      padding: 20px 15px;
+      text-align: center;
+      @include font-weight($weight: semibold);
+      color: map-get($map: $bgColors, $key: blue-general);
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 100%;
+      height: 16px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 1) 16.6%, rgba(232, 232, 232, 1) 100%);
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid map-get($map: $bgColors, $key: gray-general_light);
+
+      td {
+        padding: 12px 15px;
+        text-align: center;
+        color: map-get($map: $bgColors, $key: gray-complement);
+        @include font-weight($weight: medium);
+        font-size: 12px;
+        line-height: 18px;
+
+        &:first-child {
+          &.service-column {
+            @include flex($justify: space-evenly, $space: 10px);
+            @include font-weight($weight: semibold);
+          }
+        }
+      }
+    }
+  }
+}
+
+.status-container {
+  .status-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &.summary-status {
+    @include flex($justify: space-evenly, $align: center, $space: 20px);
+  }
+}
+
+.table-pagination {
+  @include flex($space: 10px);
+  margin-top: 20px;
+
+  &__arrow {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    @include flex();
+    padding: 5px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    .icon-left-row,
+    .icon-right-row {
+      color: map-get($map: $bgColors, $key: gray-general_light);
+      font-size: 12px;
+      @include font-weight();
+
+      &:hover {
+        color: map-get($map: $bgColors, $key: gray-complement);
+      }
+    }
+  }
+
+  &__numbers {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__number {
+    @include flex();
+    color: map-get($map: $bgColors, $key: gray-general_light);
+    font-size: 16px;
+    @include font-weight();
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: 27px;
+    height: 24px;
+    padding: 2px;
+    background: transparent;
+    border: none;
+
+    &:hover,
+    &.active {
+      background-color: map-get($map: $bgColors, $key: blue-king);
+      color: #FFFFFF;
+      box-shadow: 0 0 7.1px 0 rgba(0, 0, 0, 0.40) inset, 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+

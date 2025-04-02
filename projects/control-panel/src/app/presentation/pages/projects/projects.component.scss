@@ -1,0 +1,32 @@
+@use '../../../../styles.scss' as *;
+
+$blue-dark: map-get(
+  $map: $bgColors,
+  $key: blue-emphasis,
+);
+
+.projects-wrapper {
+  width: 100%;
+  height: 100%;
+  @include flex($position: row-reverse, $space: 5px);
+  @include respond-to-width($breakpoint: 'xl') {
+    gap: 15px;
+  }
+  &__container{
+    width: inherit;
+    height: inherit;
+    p {
+      width: 95%;
+      padding-bottom: clamp(.5rem, 3vw, 1rem);
+      margin: 0 auto 1rem auto;
+      text-align: center;
+      color: $blue-dark;
+      @include font-weight($weight: semibold);
+      border-bottom: 1px solid $gray;
+      font-size: $xs_2;
+      @include respond-to-width($breakpoint: 'xl') {
+        font-size: $md_2;
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "spad-sonarqube",
+        "projectKey": "spad1.0-frontend-control-panel"
+    }
+}

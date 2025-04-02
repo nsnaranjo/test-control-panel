@@ -1,0 +1,97 @@
+@use "../../../../../styles.scss" as *;
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  width: 98%;
+  height: calc(50% - 122px);
+
+  &__title {
+    margin: 15px 0;
+    @include font-weight($weight: semibold);
+    color: map-get($map: $bgColors, $key: blue-general);
+    font-size: 12px;
+  }
+
+  &__card-chart {
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    box-shadow: 3px 3px 7.2px 0 rgba(0, 0, 0, 0.07),
+    3px 3px 10.7px 0 rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+
+    &--performance {
+      display: grid;
+      grid-template-columns: 30% 60%;
+      justify-content: space-evenly;
+      gap: 10px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  &__button {
+    border: none;
+    color: map-get($map: $bgColors, $key: blue-general);
+    background-color: #FFFFFF;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    @include font-weight($weight: semibold);
+
+    &--selected, &:hover {
+      border-color: map-get($map: $bgColors, $key: blue-general);
+      background-color: map-get($map: $bgColors, $key: blue-general);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+      color: #FFF3F3;
+    }
+  }
+
+  &__system-usage {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    max-height: 60%;
+    max-width: 90%;
+  }
+
+  &__service-balance {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-column-start: 4;
+    max-height: 80%;
+    max-width: 100%;
+  }
+
+  &__user-actions {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-row-start: 3;
+    max-height: 70%;
+    max-width: 90%;
+    margin-top: -100px;
+  }
+
+  &__log-balance {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 3;
+    max-height: 56%;
+    max-width: 100%;
+    margin-top: -40px;
+  }
+}

@@ -1,0 +1,144 @@
+@use '../../../../styles.scss' as *;
+
+$blue: map-get(
+  $map: $bgColors,
+  $key: blue-general,
+);
+$blue-dark: map-get(
+  $map: $bgColors,
+  $key: blue-emphasis,
+);
+$shadow: map-get(
+  $map: $bgColors,
+  $key: blue-shadow,
+);
+$shadow-light: map-get(
+  $map: $bgColors,
+  $key: blue-light-shadow,
+);
+$light: map-get(
+  $map: $bgColors,
+  $key: light-general,
+);
+$gray: map-get(
+  $map: $bgColors,
+  $key: gray-complement,
+);
+$tx-gray: map-get(
+  $map: $bgColors,
+  $key: tx-gray-light,
+);
+
+// BG Status
+$attention: linear-gradient(
+  to right,
+  $light 20%,
+  map-get(
+      $map: $bgColors,
+      $key: attention-opacity,
+    )
+    100%
+);
+$disabled: linear-gradient(
+  to right,
+  $light 20%,
+  map-get(
+      $map: $bgColors,
+      $key: disabled-opacity,
+    )
+    100%
+);
+$maintenance: linear-gradient(
+  to right,
+  $light 20%,
+  map-get(
+      $map: $bgColors,
+      $key: maintenance-opacity,
+    )
+    100%
+);
+$success: linear-gradient(
+  to right,
+  $light 20%,
+  map-get(
+      $map: $bgColors,
+      $key: success-opacity,
+    )
+    100%
+);
+$error: linear-gradient(
+  to right,
+  $light 20%,
+  map-get(
+      $map: $bgColors,
+      $key: error-opacity,
+    )
+    100%
+);
+
+.dashboard-wrapper {
+  width: 100%;
+  height: 100%;
+  @include flex($position: row-reverse, $space: 5px);
+  @include respond-to-width($breakpoint: 'xl') {
+    gap: 15px;
+  }
+  &__container{
+    width: inherit;
+    height: inherit;
+    p {
+      width: 95%;
+      padding-bottom: clamp(.5rem, 3vw, 1rem);
+      margin: 0 auto 1rem auto;
+      text-align: center;
+      color: $blue-dark;
+      @include font-weight($weight: semibold);
+      border-bottom: 1px solid $gray;
+      font-size: $xs_2;
+      @include respond-to-width($breakpoint: 'xl') {
+        font-size: $md_2;
+      }
+    }
+  }
+}
+
+.container-wrapper {
+  width: 100%;
+  display: grid;
+  grid-auto-rows: 18rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
+  gap: 1rem;
+
+
+  @include respond-to-width($breakpoint: 'sm') {
+    grid-auto-rows: 13.5rem;
+  }
+
+  @include respond-to-width($breakpoint: 'xxl') {
+    grid-auto-rows: 16.5rem;
+  }
+
+}
+
+.container-indicators {
+  width: fit-content;
+  margin: auto;
+  padding: .5rem;
+  @include flex($position:column, $space: 10px);
+  border: 1px dotted $blue;
+  border-radius: 10px;
+  &__indicator {
+    width: clamp(0.55rem, 2vw, 0.75rem);
+    height: clamp(0.55rem, 2vw, 0.75rem);
+    border-radius: 9999px;
+    border: none;
+    background-color: $blue;
+    opacity: 0.4;
+    cursor: pointer;
+    padding: 0;
+    &--active {
+      background-color: $blue;
+      opacity: 1;
+    }
+  }
+}

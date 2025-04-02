@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "serviceName": "Servicio 1 - lorem ipsum",
+    "status": "success",
+    "statusSummary": "Ejecución exitosa",
+    "lastActivity": "Justo ahora",
+    "role": "Usuario",
+    "responsible": "José Pérez",
+    "observation": "Servicio completado correctamente"
+  },
+  {
+    "id": "2",
+    "serviceName": "Servicio 2 - lorem ipsum",
+    "status": "success",
+    "statusSummary": "Ejecución exitosa",
+    "lastActivity": "5 Hor 3 Min",
+    "role": "Automática",
+    "responsible": "Automática",
+    "observation": "lorem...."
+  },
+  {
+    "id": "3",
+    "serviceName": "Servicio 3 - lorem ipsum",
+    "status": "success",
+    "statusSummary": "Ejecución exitosa",
+    "lastActivity": "6 Hor 24 Min",
+    "role": "Automática",
+    "responsible": "Automática",
+    "observation": "lorem..."
+  }
+]

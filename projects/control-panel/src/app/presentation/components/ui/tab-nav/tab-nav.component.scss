@@ -1,0 +1,59 @@
+@use '../../../../../styles.scss' as *;
+
+$blue: map-get(
+  $map: $bgColors,
+  $key: blue-general,
+);
+$blue-dark: map-get(
+  $map: $bgColors,
+  $key: blue-king,
+);
+$light: map-get(
+  $map: $bgColors,
+  $key: light-general,
+);
+
+.nav-wrapper {
+  width: fit-content;
+  margin: auto;
+  @include flex($align: flex-start, $space: 2px);
+
+  &__instance {
+    position: relative;
+    /* Global Styles */
+    &-btn {
+      width: clamp(8.5rem, 14vw, 10rem);
+      height: clamp(2.1rem, 3vw, 2.5rem);
+      padding: 0 0 2px 0;
+      border: none;
+      outline: none;
+      color: $light;
+      @include flex();
+      background: transparent;
+      position: relative;
+      z-index: 9999;
+      cursor: pointer;
+
+      &:hover{
+        .btn__polygon{
+          filter: brightness(0.5) drop-shadow(0px 1px 0px $light);
+        }
+      }
+
+      &__title {
+        position: absolute;
+      }
+    }
+
+    /* Left Polygon */
+    &-left {
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 10% 100%);
+    }
+
+    /* Right Polygon */
+    &-right {
+      clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+    }
+  }
+
+}

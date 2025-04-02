@@ -1,0 +1,9 @@
+<div class="status__icon" [class.status__icon-label]="label" [ngClass]="containerClass" [style.position]="!label && 'relative'">
+  @if (!label) {
+  <ngx-spad-icon-component>
+    <i class="status__icon-global icon-cp-{{iconClass}}" [ngClass]="{'status__icon-other': !isHomePage}"></i>
+  </ngx-spad-icon-component>
+  }@else {
+  <span> {{label}} </span>
+  }
+</div>

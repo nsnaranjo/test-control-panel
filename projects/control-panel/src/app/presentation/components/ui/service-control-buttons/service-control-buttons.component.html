@@ -1,0 +1,30 @@
+<div class="control-actions">
+  <ng-container *ngFor="let button of processedButtons">
+    <button *ngIf="button.visible" class="control-actions__button" [ngClass]="'control-actions__button--' + button.type"
+            [class.control-actions__button--disabled]="isButtonDisabled(button.type)"
+            [attr.data-tooltip]="getTooltipText(button)" (click)="handleButtonClick(button, $event)"
+    >
+      <!-- Custom icons -->
+      <ng-container *ngIf="button.svgTemplate">
+        <ng-container *ngTemplateOutlet="button.svgTemplate"></ng-container>
+      </ng-container>
+
+      <!-- Default icons -->
+      <ng-container *ngIf="!button.svgTemplate">
+        <ngx-spad-icon-component  [ngClass]="getButtonClass(button.type)">
+          <i *ngIf="button.type === 'restart'" class="icon-cp-reboot"></i>
+
+          <i *ngIf="button.type === 'start'" class="icon-cp-start-fl"></i>
+
+          <i *ngIf="button.type === 'stop'" class="icon-cp-halt-fl"></i>
+
+          <i *ngIf="button.type === 'terminal'" class="icon-cp-terminal"></i>
+
+          <i *ngIf="button.type === 'runLog'" class="icon-cp-runlog"></i>
+
+          <i *ngIf="button.type === 'observation'" class="icon-cp-coment"></i>
+        </ngx-spad-icon-component>
+      </ng-container>
+    </button>
+  </ng-container>
+</div>

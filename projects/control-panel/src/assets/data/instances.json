@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "name": "Spad-core-apis",
+    "status": "deshabilitado",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "2",
+    "name": "Spad-platform-front",
+    "status": "fallo",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "3",
+    "name": "Spad-platform-auth",
+    "status": "mantenimiento",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "4",
+    "name": "Spad-system",
+    "status": "en ejecución",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "5",
+    "name": "Spad-services",
+    "status": "mantenimiento",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "6",
+    "name": "Spad-confirmation",
+    "status": "en ejecución",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "7",
+    "name": "Spad-engine",
+    "status": "fallo",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  },
+  {
+    "id": "8",
+    "name": "Spad-cloud",
+    "status": "atención",
+    "system": { "cpu": 0, "storage": 0, "ram": 0, "vram": 0 },
+    "services": 0,
+    "lastActivity": "2 días"
+  }
+]

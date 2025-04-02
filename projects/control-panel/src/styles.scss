@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/presentation/sass/variables';
+@import './app/presentation/sass/mixins';
+@import './app/presentation/sass/colors';
+@import './app/presentation/sass/fonts';
+@import './app/presentation/sass/reset';
+
+
+html {
+  scroll-behavior: smooth;
+  user-select: none;
+  -webkit-user-select: none; /* Para Safari */
+  -moz-user-select: none; /* Para Firefox */
+  -ms-user-select: none; /* Para IE 10+ */
+}
+
+body {
+  background: #F3F3F3;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

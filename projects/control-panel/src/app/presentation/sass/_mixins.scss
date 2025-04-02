@@ -1,0 +1,236 @@
+@use 'colors' as col;
+@use 'variables' as var;
+
+$light: map-get(
+  $map: col.$bgColors,
+  $key: light-general,
+);
+$gray: map-get(
+  $map: col.$bgColors,
+  $key: gray-general,
+);
+
+// Font Weight
+@mixin font-weight($weight: regular) {
+  @if $weight == semibold {
+    font-family: PoppinsSemibold, sans-serif;
+    font-style: normal;
+    font-weight: 600; /* semibold */
+  } @else if $weight == bold {
+    font-family: PoppinsBold, sans-serif;
+    font-style: normal;
+    font-weight: 700; /* bold */
+  } @else if $weight == medium {
+    font-family: PoppinsMedium, sans-serif;
+    font-style: normal;
+    font-weight: 500; /* medium */
+  } @else {
+    font-family: PoppinsRegular, sans-serif;
+    font-weight: 400; /* custom */
+  }
+}
+
+// Button Standar
+@mixin btn-style(
+  $py: 8px,
+  $px: 20px,
+  $rounded: 9999px,
+  $bg: blue-general,
+  $hover: blue-emphasis,
+  $color: tx-light,
+  $breakpoint: var.$xs_2,
+  $outline: none,
+  $weight: semibold
+) {
+  width: 100%;
+  line-height: normal;
+  padding: $py $px;
+  @include flex($space: 12px);
+  background-color: map-get($map: col.$bgColors, $key: $bg);
+  color: map-get($map: col.$bgColors, $key: $color);
+  font-size: $breakpoint;
+  @include font-weight($weight: $weight);
+  border-radius: $rounded;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+  @if $outline != none {
+    outline: $outline solid map-get($map: col.$bgColors, $key: $color);
+  }
+  &:hover {
+    background-color: map-get($map: col.$bgColors, $key: $hover);
+    color: $light;
+    @if $bg == ghost and $outline == none {
+      outline: 1px solid $light;
+    } @else {
+      outline: $outline solid map-get($map: col.$bgColors, $key: $hover);
+    }
+  }
+  &:disabled {
+    background-color: $gray;
+    color: $light;
+    cursor: not-allowed;
+  }
+}
+
+// Display Flex
+@mixin flex($justify: center, $align: center, $space: 0, $position: row, $wrap: nowrap, $order: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $space;
+  flex-direction: $position;
+  flex-wrap: $wrap;
+  order: $order;
+}
+
+// Responsive mixin
+// Mixin width
+@mixin respond-to-width($breakpoint) {
+  @if map-has-key(var.$breakpoints-width, $breakpoint) {
+    @media (min-width: map-get(var.$breakpoints-width, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "El breakpoint `#{$breakpoint}` no se encuentra definido en \$breakpoints-width.";
+  }
+}
+
+// Mixin height
+@mixin respond-to-height($breakpoint) {
+  @if map-has-key(var.$breakpoints-height, $breakpoint) {
+    @media (min-height: map-get(var.$breakpoints-height, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "El breakpoint `#{$breakpoint}` no se encuentra definido en \$breakpoints-height.";
+  }
+}
+
+// Action button
+@mixin action-button($tooltip-left: 50%, $tooltip-triangle-left: 10%, $control-button: false) {
+  width: 34px;
+  height: 34px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+  @include flex();
+  @if ($control-button == true) {
+    border-radius: 100%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), -1px -1px 2.7px 0px #e2f6ff;
+  }
+
+  &:hover {
+    background-color: #175280;
+    border-radius: 100%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), -1px -1px 2.7px 0px #e2f6ff;
+    border: 2px solid #ffffff;
+
+    i {
+      color: #ffffff;
+    }
+  }
+
+  // Tooltip
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  // Tooltip text
+  &::before {
+    content: attr(data-tooltip);
+    top: -32px;
+    left: $tooltip-left;
+    transform: translateX(-50%);
+    background-color: #237cc8;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    white-space: nowrap;
+    border: 0.5px solid #ffffff;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+
+  // Tooltip triangle
+  &::after {
+    content: '';
+    top: -5px;
+    left: $tooltip-triangle-left;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #237cc8;
+  }
+
+  // Show tooltip on hover
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+// Status cards
+@mixin card-opacity($status, $direction: to right) {
+  $color: map-get($bgColors, 'opacity-#{$status}');
+  $hover: map-get($bgColors, 'opacity-#{$status}-hover');
+  $border: map-get($bgColors, 'general-#{$status}');
+
+  @if not $color or not $hover or not $border {
+    @warn "Uno de los colores no está definido para el estado `#{$status}`";
+  }
+
+  background: linear-gradient($direction, $light 10%, $color 100%);
+
+  &:hover {
+    background: linear-gradient($direction, $light 10%, $hover 100%) padding-box,
+      linear-gradient($direction, $border, $light) border-box;
+    background-size: 100% 100%;
+  }
+}
+
+
+@mixin modal(){
+  &::backdrop {
+    background-color: rgb(0 0 0 / 0.2);
+    backdrop-filter: blur(5px);
+  }
+  &:not([open]){
+    display: none;
+  }
+  width: 80%;
+  max-width: 600px;
+  min-height: 200px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: map-get($map: $bgColors, $key: light-general);
+  border: 7px solid map-get($map: $bgColors, $key: light-general);
+  border-radius: 25px;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 0.3), inset 0 0 40px rgb(0 0 0 / 0.2);
+  @include flex($justify: space-between, $position: column);
+  animation: fade 0.5s ease forwards;
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+      transform: scale(0.6);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

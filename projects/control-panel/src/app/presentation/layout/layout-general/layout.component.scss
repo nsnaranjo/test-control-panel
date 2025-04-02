@@ -1,0 +1,30 @@
+@use '../../../../styles.scss' as *;
+
+.layout-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: map-get($map: $bgColors, $key: light-general);
+  @include flex($align: normal, $justify: space-between, $position: column);
+  position: relative;
+}
+
+.main--content {
+  width: min(90%, 1980px);
+  min-height: clamp(20rem, 51vh, 46.5rem);
+  margin: 0 auto;
+  padding: clamp(0.5rem, 2vw, 1.5rem);
+  border-radius: 15px;
+  box-shadow: 0 0 17px 0 map-get($map: $bgColors, $key: blue-shadow);
+
+  @include respond-to-width($breakpoint: 'md') {
+    overflow: hidden;
+  }
+  @include respond-to-width($breakpoint: 'lg') {
+    height: min(60%, 710px);
+  }
+  @include respond-to-width($breakpoint: 'xl') {
+    height: min(80%, 710px);
+  }
+}
+
+

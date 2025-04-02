@@ -1,0 +1,42 @@
+<div class="dashboard">
+  <div class="dashboard__system-usage">
+    <h2 class="dashboard__title">Uso del sistema y rendimiento</h2>
+
+    <div class="dashboard__card-chart dashboard__card-chart--performance">
+      <div class="dashboard__buttons">
+        <button *ngFor="let metric of systemMetrics" class="dashboard__button"
+                [class.dashboard__button--selected]="isSelected(metric)" (click)="selectMetric(metric)"
+        >
+          {{ metric.type }}: {{ metric.value }}%
+        </button>
+      </div>
+
+      <app-system-usage-performance-chart [metricData]="selectedMetric.data" [metricColor]="selectedMetric.color" />
+    </div>
+  </div>
+
+  <div class="dashboard__service-balance">
+    <h2 class="dashboard__title">Balance del servicio</h2>
+
+    <div class="dashboard__card-chart">
+      <app-service-balance-chart />
+    </div>
+  </div>
+
+  <div class="dashboard__user-actions">
+    <h2 class="dashboard__title">Acciones de los usuarios</h2>
+
+    <div class="dashboard__card-chart">
+      <app-user-actions-chart />
+    </div>
+
+  </div>
+
+  <div class="dashboard__log-balance">
+    <h2 class="dashboard__title">Balance de logs</h2>
+
+    <div class="dashboard__card-chart">
+      <app-log-balance-chart />
+    </div>
+  </div>
+</div>

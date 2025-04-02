@@ -1,0 +1,21 @@
+<nav class="nav-wrapper" *ngIf="showTabs">
+  <section class="nav-wrapper__instance" *ngFor="let tab of tabs; let i = index">
+
+    <!-- Botón que activa el menú -->
+    <section class="nav-wrapper__btns nav-wrapper__{{tab.polygon}}">
+      <button class="nav-wrapper__instance-btn nav-wrapper__instance-{{tab.polygon}}"
+              (click)="onclick(i)" [routerLink]="tab.route"
+      >
+        <img class="btn__polygon" src="/assets/svg/border-{{tab.polygon}}.svg" alt="Poligono">
+
+        <h5 class="nav-wrapper__instance-btn__title">
+          <ngx-spad-icon-component>
+            <i class="nav-wrapper__instance-btn__icon icon-{{tab.icon}}"></i>
+          </ngx-spad-icon-component>
+
+          {{ tab.title }}
+        </h5>
+      </button>
+    </section>
+  </section>
+</nav>

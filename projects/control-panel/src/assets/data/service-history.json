@@ -1,0 +1,113 @@
+[
+  {
+    "id": "1",
+    "serviceName": "Servicio 1 - lorem ipsum",
+    "controlButtons": true,
+    "status": "success",
+    "statusSummary": "Ejecución exitosa",
+    "lastActivity": "5 Hor 3 Min",
+    "terminal": true,
+    "runLog": true
+  },
+  {
+    "id": "2",
+    "serviceName": "Servicio 2 - lorem ipsum",
+    "controlButtons": true,
+    "status": "warning",
+    "statusSummary": "Reinicio automático",
+    "lastActivity": "7 Hor 6 Min",
+    "terminal": true,
+    "runLog": true
+  },
+  {
+    "id": "3",
+    "serviceName": "Servicio 3 - lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "4",
+    "serviceName": "Servicio 4 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "5",
+    "serviceName": "Servicio 5 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "6",
+    "serviceName": "Servicio 6 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "7",
+    "serviceName": "Servicio 7 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "8",
+    "serviceName": "Servicio 8 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "9",
+    "serviceName": "Servicio 9 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "10",
+    "serviceName": "Servicio 10 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "11",
+    "serviceName": "Servicio 11 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  },{
+    "id": "12",
+    "serviceName": "Servicio 12 -  lorem ipsum",
+    "controlButtons": true,
+    "status": "error",
+    "statusSummary": "Error  del servicio",
+    "lastActivity": "14 días",
+    "terminal": true,
+    "runLog": true
+  }
+]

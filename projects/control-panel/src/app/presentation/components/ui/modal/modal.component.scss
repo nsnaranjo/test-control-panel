@@ -1,0 +1,54 @@
+@use "../../../../../styles.scss" as *;
+
+.wrapper{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgb(115 115 115 / 0.3);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  &__modal{
+    width: calc(50% - 4rem);
+    height: calc(600px - 4rem);
+    margin-top: 5%;
+    padding: 2rem;
+    border-radius: 20px;
+    background-color: aliceblue;
+    transition: all .4s ease;
+    animation: fade 1s ease 0s 1 normal forwards;
+
+    @keyframes fade {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    &-title{
+      @include flex($justify: space-between);
+    }
+
+    &__close-button{
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: black;
+      cursor: pointer;
+    }
+
+    &-desc{
+      margin-top: 15px;
+      @include flex($align: flex-start, $position: column, $space: 15px);
+      font-size: $xs_2;
+      color: #616161;
+    }
+  }
+}

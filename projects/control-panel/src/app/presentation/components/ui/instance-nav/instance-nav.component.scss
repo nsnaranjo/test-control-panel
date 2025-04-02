@@ -1,0 +1,146 @@
+@use '../../../../../styles.scss' as *;
+
+$blue: map-get(
+  $map: $bgColors,
+  $key: blue-general,
+);
+$light: map-get(
+  $map: $bgColors,
+  $key: light-general,
+);
+$gray-dark: map-get(
+  $map: $bgColors,
+  $key: gray-complement,
+);
+
+// Status Color
+$error: map-get(
+  $map: $bgColors,
+  $key: issues-error,
+);
+$warning: map-get(
+  $map: $bgColors,
+  $key: issues-warning,
+);
+$maintenance: map-get(
+  $map: $bgColors,
+  $key: issues-maintenance,
+);
+$success: map-get(
+  $map: $bgColors,
+  $key: issues-success,
+);
+
+.sidebar {
+  width: 100%;
+  height: calc(100% - 1.5rem);
+  min-width: 300px;
+  max-width: 350px;
+  margin-top: 1.5rem;
+  @include flex($align: flex-start, $justify: flex-start, $space: 15px);
+
+  @include respond-to-width($breakpoint: 'xl') {
+    width: 300px;
+    gap: 35px;
+  }
+
+  &__content {
+    width: calc(100% - 1rem);
+    padding: 0 .5rem;
+    height: inherit;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border-radius: 6px;
+    }
+
+    @include respond-to-width($breakpoint: 'xl') {
+      width: calc(100% - .6rem);
+      overflow: hidden;
+      padding: 0 .3rem;
+    }
+  }
+  &__toggle-btn {
+    width: 100%;
+    padding: .5rem 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    color: $blue;
+    @include font-weight($weight: semibold);
+    @include flex($align: flex-start, $justify: space-between, $space: 20px);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: $blue;
+      color: $light;
+    }
+    span {
+      flex-grow: 1;
+    }
+  }
+  &__options {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  &__item {
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgb(0 0 0 / 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    &:hover {
+      background-color: $blue;
+      a {
+        color: $light;
+      }
+    }
+    &-active{
+      background-color: $blue;
+      box-shadow: none;
+      a {
+        color: $light;
+      }
+    }
+    &--link {
+      padding: .8rem .5rem;
+      text-decoration: none;
+      color: $gray-dark;
+      text-align: left;
+      @include flex($align: flex-start, $justify: space-around);
+      &-attentive {
+        color: $warning;
+      }
+      &-maintenance {
+        color: $maintenance;
+      }
+      &-clip-check {
+        color: $success;
+      }
+      &-clip-error {
+        color: $error;
+      }
+      &-clip-slow {
+        color: $gray-dark;
+      }
+      &-label {
+        width: 65%;
+      }
+    }
+  }
+}
+
+.line-wrapper {
+  width: 10px;
+  height: inherit;
+  margin: 0.5rem auto 0.5rem 0;
+  border: none;
+  outline: none;
+  box-shadow: 0 0 30px rgb(0 0 0 / 0.2);
+}

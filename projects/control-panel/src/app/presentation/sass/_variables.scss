@@ -1,0 +1,28 @@
+// Fonts Size
+$standar: 1rem; //16px
+$xs_1: $standar - 0.25; //12px
+$xs_2: $standar - 0.125; //14px
+$md_2: $standar + 0.125; //18px
+$lg_1: $standar + 0.25; //20px
+$lg_2: $standar + 0.5; //24px
+$xl_1: $standar + 0.875; //30px
+$xl_2: $standar + 1.25; //36px
+$xxl_1: $standar + 2; //48px
+$xxl_2: $standar + 2.75; //60px
+$xxl_3: $standar + 5.25; //80px
+
+// Breakpoints
+$breakpoints-width: (
+  'xs': 320px,   // Extra pequeño
+  'sm': 480px,   // Pequeño
+  'md': 768px,   // Mediano
+  'lg': 1024px,  // Grande
+  'xl': 1440px,   // Extra grande
+  'xxl': 1980px   // Extra Extra grande
+);
+
+$breakpoints-height: (
+  'short': 600px,   // Pantallas bajas en altura
+  'medium': 800px,  // Altura media
+  'tall': 1080px    // Pantallas altas
+);

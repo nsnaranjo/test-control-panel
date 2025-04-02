@@ -1,0 +1,61 @@
+$bgColors: (
+  //principal colors
+  'blue-general': #1d70b6,
+  'blue-general_light': #3588c8,
+  'blue-complement': #0e6eb9,
+  'blue-emphasis': #2b2b65,
+  'blue-king': #175280,
+  'magenta-support': #9a1764,
+  'light-general': #fff,
+  'dark-general': #000,
+
+  // Issues Color
+  'issues-success': #0DD987,
+  'issues-warning': #FF8800,
+  'issues-error': #FF2929,
+  'issues-maintenance': #FBAA4E,
+
+  // Status Color
+  'general-failure': #FF0000,
+  'general-attention': #D19003,
+  'general-maintenance': #FF8800,
+  'general-running': #72B71D,
+  'general-disabled': #212121,
+
+  'opacity-failure': rgb(255 0 0 / .3),
+  'opacity-attention': rgb(209 144 3 / .3),
+  'opacity-maintenance': rgb(255 136 0 / .3),
+  'opacity-running': rgb(114 183 29 / .3),
+  'opacity-disabled': rgb(42 42 42 / .3),
+
+  'opacity-failure-hover': rgb(255 0 0 / .5),
+  'opacity-attention-hover': rgb(209 144 3 / .5),
+  'opacity-maintenance-hover': rgb(255 136 0 / .5),
+  'opacity-running-hover': rgb(114 183 29 / .5),
+  'opacity-disabled-hover': rgb(42 42 42 / .5),
+
+  //complement colors
+  'green-support': #94c11f,
+  'blue-support': #2da4dc,
+  'yellow-support': #f7a521,
+  'terracotta-support': #d63420,
+  'magenta-suport_ligth': #cd8bb2,
+
+  //grays complements
+  'gray-general': #b2b2b2,
+  'gray-general_xlight': #f9f9f9,
+  'gray-general_light': #d2d2d2,
+  'gray-complement': #616161,
+  'gray-opacity': #ffffff4d,
+
+  //color texts
+  'tx-blue_general_light': #0095da,
+  'tx-blue_complement': #15497c,
+  'tx-gray-light': #bbbab9,
+
+  //optional
+  'ghost': transparent,
+  'blue-light-shadow': #1D70B64D,
+  'blue-shadow': #065ad840,
+);
+

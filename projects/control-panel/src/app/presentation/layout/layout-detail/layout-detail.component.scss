@@ -1,0 +1,39 @@
+@use '../../../../styles.scss' as *;
+
+.layout-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: map-get($map: $bgColors, $key: light-general);
+  @include flex($align: normal, $justify: space-between, $position: column);
+}
+
+.main--content-detail {
+  width: min(90%, 1980px); // 100%;
+  min-height: clamp(30rem, 10vh, 46.5rem);
+  margin: 0 auto;
+  padding: clamp(.5rem, 2vw, 1.5rem);
+  border-radius: 15px;
+  box-shadow: 0 0 17px 0 map-get($map: $bgColors, $key: blue-shadow);
+  display: flex;
+
+  @include respond-to-width($breakpoint: 'md') {
+    overflow: hidden;
+  }
+  @include respond-to-width($breakpoint: 'lg') {
+    height: min(90%, 950px);
+  }
+  @include respond-to-width($breakpoint: 'xl') {
+    height: min(90%, 920px);
+  }
+
+
+}
+
+.instance-nav-container {
+  display: none; /* Oculta el nav por defecto */
+
+  @include respond-to-width($breakpoint: 'xl') {
+    display: block; /* Muestra el nav en pantallas grandes */
+    margin-right: 1rem; /* Ajusta el margen si es necesario */
+  }
+}

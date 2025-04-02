@@ -1,0 +1,48 @@
+<button class="card" [ngClass]="containerClass" (click)="status !== 'deshabilitado' && onSelectedInstance(instanceName)">
+  <img class="card__bg" [src]="statusImg" alt="Icono del estado de la instancia">
+  <div class="card__instance">
+    <ngx-spad-icon-component>
+      <i class="{{statusClass}} icon-cp-instance"></i>
+    </ngx-spad-icon-component>
+    <div class="card__instance-data">
+      <div class="card__instance-state">
+        <h3 class="card__instance-title">{{instanceName}}</h3>
+        <h4 class="card__instance-subtitle">
+          Estado: <span class="card__instance-state__type" ngClass="{{containerClass}}--type">{{status}}
+            <span>&#8226;</span></span>
+        </h4>
+      </div>
+
+      <section class="card__instance-system">
+        <h3 class="card__instance-title">Consumos del sistema</h3>
+        <ul class="card__instance-system__performance">
+          <li class="card__instance-system__item">CPU: <span>{{system.cpu}}%</span></li>
+        <li class="card__instance-system__item">Storage: <span>{{system.storage}}%</span></li>
+        <li class="card__instance-system__item">RAM: <span>{{system.ram}}%</span></li>
+        <li class="card__instance-system__item">VRAM: <span>{{system.vram}}%</span></li>
+      </ul>
+    </section>
+  </div>
+  </div>
+
+  <div class="card__services">
+    <h3 class="card__instance-subtitle">
+      Número de servicios: <span class="card__services__count"> {{services}}</span>
+    </h3>
+    <h3 class="card__instance-subtitle">
+      Última actividad: <span class="card__services__last-activity"> {{lastActivity}}</span>
+    </h3>
+  </div>
+
+  <section class="card__issues">
+    <h3 class="card__instance-subtitle">Issues:</h3>
+    <ul class="card__issues__actions">
+      <li class="card__issues__item"><app-status-icon type="success" [advanced]="status" /> <app-status-icon
+          type="success" label="4" [advanced]="status" /> </li>
+      <li class="card__issues__item"><app-status-icon type="warning" [advanced]="status" /> <app-status-icon
+          type="warning" label="5" [advanced]="status" /></li>
+      <li class="card__issues__item"><app-status-icon type="error" [advanced]="status" /> <app-status-icon type="error"
+          label="2" [advanced]="status" /></li>
+    </ul>
+  </section>
+</button>

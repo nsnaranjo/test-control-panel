@@ -1,0 +1,15 @@
+@use '../../../../../styles.scss' as *;
+
+footer {
+  padding-bottom: 1rem;
+  @include flex($justify: space-around);
+  color: map-get($map: $bgColors, $key: tx-gray-light);
+  @include respond-to-width($breakpoint: 'xl') {
+    padding: 1rem 0;
+  }
+  a {
+    margin-right: 5px;
+    color: map-get($map: $bgColors, $key: tx-gray-light);
+    @include font-weight($weight: semibold);
+  }
+}

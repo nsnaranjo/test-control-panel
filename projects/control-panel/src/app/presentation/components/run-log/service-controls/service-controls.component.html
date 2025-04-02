@@ -1,0 +1,54 @@
+<div class="service-container">
+  <div class="service-container__status">
+    <div class="service-container__icon service-container__icon--circle">
+      <app-status-icon  type="success"></app-status-icon>
+    </div>
+
+    <div class="service-container__text">Servicio 1 - lorem ipsum | Reinicio automático</div>
+  </div>
+
+  <div class="service-container__controls">
+    <app-service-control-buttons class="service-container__control service-container__control--divider" [buttons]="['restart']" [controlButtonStyle]="false"
+                                 [iconTemplates]="iconTemplates" (restartClick)="restartService()"
+    />
+
+
+    <app-service-control-buttons class="service-container__control service-container__control--divider" [buttons]="['start']" [controlButtonStyle]="false"
+                                 [iconTemplates]="iconTemplates" (startClick)="startService()"
+    />
+
+
+    <app-service-control-buttons class="service-container__control service-container__control--divider" [buttons]="['stop']" [controlButtonStyle]="false"
+                                 [iconTemplates]="iconTemplates" (stopClick)="stopService()"
+    />
+
+
+    <app-service-control-buttons class="service-container__control service-container__control--divider" [buttons]="['terminal']" [controlButtonStyle]="false"
+                                 [iconTemplates]="iconTemplates" (terminalClick)="openTerminal()"
+    />
+  </div>
+</div>
+
+<ng-template #restartIcon>
+  <ngx-spad-icon-component class="service-container__control--icon">
+    <i class='icon-cp-reboot'></i>
+  </ngx-spad-icon-component>
+</ng-template>
+
+<ng-template #startIcon>
+  <ngx-spad-icon-component class="service-container__control--icon">
+    <i class='icon-cp-start-fl'></i>
+  </ngx-spad-icon-component>
+</ng-template>
+
+<ng-template #stopIcon>
+  <ngx-spad-icon-component class="service-container__control--icon">
+    <i class='icon-cp-halt-fl'></i>
+  </ngx-spad-icon-component>
+</ng-template>
+
+<ng-template #terminalIcon>
+  <ngx-spad-icon-component class="service-container__control--icon">
+    <i class='icon-cp-terminal'></i>
+  </ngx-spad-icon-component>
+</ng-template>

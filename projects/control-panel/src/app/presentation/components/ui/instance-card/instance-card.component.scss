@@ -1,0 +1,254 @@
+@use '../../../../../styles.scss' as *;
+
+$blue: map-get(
+  $map: $bgColors,
+  $key: blue-general,
+);
+$blue-dark: map-get(
+  $map: $bgColors,
+  $key: blue-emphasis,
+);
+$shadow: map-get(
+  $map: $bgColors,
+  $key: blue-shadow,
+);
+$shadow-light: map-get(
+  $map: $bgColors,
+  $key: blue-light-shadow,
+);
+$light: map-get(
+  $map: $bgColors,
+  $key: light-general,
+);
+$gray: map-get(
+  $map: $bgColors,
+  $key: gray-complement,
+);
+$tx-gray: map-get(
+  $map: $bgColors,
+  $key: tx-gray-light,
+);
+
+// Status Colors
+$running: map-get(
+  $map: $bgColors,
+  $key: general-running,
+);
+$attention: map-get(
+  $map: $bgColors,
+  $key: general-attention,
+);
+$maintenance: map-get(
+  $map: $bgColors,
+  $key: general-maintenance,
+);
+$failure: map-get(
+  $map: $bgColors,
+  $key: general-failure,
+);
+
+.card {
+  width: 100%;
+  height: auto;
+  max-width: 550px;
+  min-height: 190px;
+  margin: auto;
+  padding: 10px 10px 15px 10px;
+  outline: none;
+  border-radius: 8px;
+  border: 2px solid $light;
+  font-size: $xs_1;
+  @include flex($align: normal, $position: column, $space: 10px);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.1s ease;
+
+  @include respond-to-width($breakpoint: 'lg') {
+    gap: 15px;
+  }
+  @include respond-to-width($breakpoint: 'xl') {
+    gap: 18px;
+  }
+
+  &:hover {
+    box-shadow: 3px 3px 15px rgb(0 0 0 / 0.2);
+    border: 2px solid transparent;
+  }
+
+  &__bg {
+    width: 100px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  &__instance {
+    width: calc(100% - 2.5rem);
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-radius: 10px;
+    border: solid 4px rgb(255 255 255 / 0.6);
+    box-shadow: inset 0 0 10px $shadow-light;
+    @include flex($space: 20px);
+    background-color: rgb(255 255 255 / 0.6);
+
+    i {
+      font-size: $xl_2;
+    }
+
+    &-title {
+      color: $blue-dark;
+    }
+    &-subtitle {
+      color: $blue;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-data {
+      @include flex($justify: flex-start, $position: column, $space: 15px);
+      @include respond-to-width($breakpoint: 'sm'){
+        width: 80%;
+        flex-direction: row;
+      }
+      &--running {
+        color: $running;
+      }
+      &--attention {
+        color: $attention;
+      }
+      &--maintenance {
+        color: $maintenance;
+      }
+      &--failure {
+        color: $failure;
+      }
+      &--disabled {
+        color: $gray;
+      }
+    }
+
+    &-state {
+      width: 100%;
+      line-height: 25px;
+      @include respond-to-width($breakpoint: 'sm'){
+        width: 50%;
+      }
+      &__type {
+        margin-left: 5px;
+        padding: 0 6px;
+        border-radius: 9999px;
+        color: $light;
+        text-transform: capitalize;
+        @include font-weight();
+        font-size: $xs_1;
+        span {
+          font-size: $xl_1;
+          vertical-align: top;
+        }
+      }
+    }
+
+    &-system {
+      h3 {
+        margin-bottom: 12px;
+      }
+      &__performance {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      &__item {
+        width: fit-content;
+        text-transform: uppercase;
+        @include font-weight($weight: semibold);
+        color: $gray;
+        z-index: 2;
+        span {
+          color: $tx-gray;
+        }
+      }
+    }
+  }
+  &__services {
+    @include flex($justify: space-around, $position: column, $space: 10px);
+    z-index: 2;
+    @include respond-to-width($breakpoint: 'sm'){
+      flex-direction: row;
+
+    }
+    span {
+      color: $gray;
+    }
+  }
+
+  &__issues {
+    @include flex($space: 20px);
+    z-index: 3;
+    &__actions {
+      @include flex($space: 20px);
+    }
+    &__item {
+      @include flex();
+    }
+  }
+}
+
+.card__attention {
+  @include card-opacity($status: attention);
+  &--type {
+    background-color: rgb(48 101 158 / 0.6);
+    span {
+      filter: drop-shadow(0 0 5px #f8cc6e);
+      color: #ffd069;
+    }
+  }
+}
+
+.card__maintenance {
+  @include card-opacity($status: maintenance);
+  &--type {
+    background-color: rgb(126 106 82 / 0.4);
+    span {
+      filter: drop-shadow(0 0 5px #f8cc6e);
+      color: #ffb25a;
+    }
+  }
+}
+
+.card__running {
+  @include card-opacity($status: running);
+
+  &--type {
+    background-color: rgb(48 102 158 / 0.4);
+    span {
+      filter: drop-shadow(0 0 5px #b0e034);
+      color: #ace515;
+    }
+  }
+}
+
+.card__failure {
+  @include card-opacity($status: failure);
+  &--type {
+    background-color: rgb(189 86 86 / 0.4);
+    span {
+      filter: drop-shadow(0 0 5px #ff0000);
+      color: #ff210d;
+    }
+  }
+}
+
+.card__disabled {
+  @include card-opacity($status: disabled);
+  &--type {
+    background-color: rgb(97 97 97 / 0.4);
+    span {
+      filter: none;
+      color: #e8e8e8;
+    }
+  }
+}

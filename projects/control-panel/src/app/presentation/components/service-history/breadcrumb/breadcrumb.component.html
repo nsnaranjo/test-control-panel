@@ -1,0 +1,26 @@
+<div class="breadcrumb">
+  <div class="breadcrumb__content">
+    <ng-container *ngIf="!isRunLog; else runLogBreadcrumb">
+      <ngx-spad-icon-component>
+        <i class='icon-left--row'></i>
+      </ngx-spad-icon-component>
+
+      <button (click)="goBack()">
+        <p class="breadcrumb__main-route">{{ instanceName }} /</p>
+      </button>
+
+      <p class="breadcrumb__current-route">Historial de servicios ejecutados</p>
+    </ng-container>
+
+    <ng-template #runLogBreadcrumb>
+      <button (click)="goBack()">
+        <p class="breadcrumb__main-route">Historial de servicios ejecutados |</p>
+      </button>
+
+      <p class="breadcrumb__current-route">Run Log</p>
+    </ng-template>
+  </div>
+
+  <div class="breadcrumb__border"></div>
+</div>
+

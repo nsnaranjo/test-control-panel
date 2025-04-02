@@ -1,0 +1,83 @@
+<header>
+  <div class="logo-header">
+    <a [routerLink]="['/']" class="logo-header__logo">
+      <img ngSrc="../../../../../assets/logos/logo-spad-iot.webp" width="120" alt="Logo Spad IOT" height="43">
+    </a>
+    <hr />
+    <p>Panel de control</p>
+  </div>
+
+  <div class="header-profile">
+    <div class="header-profile__notifications">
+      <button class="header-profile__notifications-btn">
+        <ngx-spad-icon-component>
+          <i class="icon-cp-notification header-profile__notifications-icon"></i>
+        </ngx-spad-icon-component>
+      </button>
+    </div>
+
+    <div class="header-profile__separator"></div>
+
+    <div class="header-profile__dropdown" #dropdownContainer>
+      <button class="header-profile__trigger" (click)="toggleDropdown()">
+        <div class="header-profile__avatar">
+          <img
+            *ngIf="pictureProfile && !imageError"
+            [ngSrc]="pictureProfile"
+            width="34"
+            height="33"
+            alt="User Avatar"
+            class="header-profile__avatar-img"
+            priority
+            (error)="onImageError()"
+          >
+          <div *ngIf="!pictureProfile || imageError" class="header-profile__avatar-initial">
+            {{ userInitial }}
+          </div>
+        </div>
+
+        <span class="header-profile__name">{{ profile?.given_name }} {{ profile?.family_name }}</span>
+
+        <ngx-spad-icon-component [ngClass]="{'header-profile__arrow--rotated': isDropdownOpen}">
+          <i class='icon-cp-down-row header-profile__arrow'></i>
+        </ngx-spad-icon-component>
+      </button>
+
+      <div class="header-profile__menu" [ngClass]="{'header-profile__menu--open': isDropdownOpen}">
+        <div class="header-profile__menu-header">
+          <div class="header-profile__user-info">
+            <div class="header-profile__user-icon">
+              <ngx-spad-icon-component>
+                <i class='icon-profile'></i>
+              </ngx-spad-icon-component>
+            </div>
+
+            <p class="header-profile__user-name">{{ profile?.email }}</p>
+          </div>
+
+          <p class="header-profile__access-time">
+            <span class="header-profile__access-label">Último acceso:</span> {{ date }}
+          </p>
+        </div>
+
+        <button class="header-profile__logout" (click)="logOut()">
+          <span class="header-profile__logout-text">Cerrar sesión</span>
+
+          <ngx-spad-icon-component>
+            <i class='icon-cp-logout header-profile__logout-icon'></i>
+          </ngx-spad-icon-component>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<dialog class="modal-wrapper" #logout>
+  <img ngSrc="assets/gif/log-out.webp" width="80" height="80" alt="Icono advertencia" priority />
+  <h3>¿Estás seguro de que deseas cerrar sesión?</h3>
+  <p>Serás redirigido a la página principal de SPAD</p>
+  <div class="modal-wrapper__actions">
+    <button class="modal-wrapper__button modal-wrapper__button--cancel" (click)="cancelLogOut()">Regresar</button>
+    <button class="modal-wrapper__button modal-wrapper__button--confirm" (click)="logOut(true)">Sí, cerrar sesión</button>
+  </div>
+</dialog>

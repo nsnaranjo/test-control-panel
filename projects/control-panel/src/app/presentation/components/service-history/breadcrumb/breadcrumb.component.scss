@@ -1,0 +1,45 @@
+@use "../../../../../styles.scss" as *;
+
+.breadcrumb {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__content {
+    display: flex;
+    align-items: center;
+
+    button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+
+  &__main-route {
+    @include font-weight($weight: semibold);
+    font-size: 14px;
+    color: #BBBAB9;
+    margin: 0 5px 0 0;
+    cursor: pointer;
+  }
+
+  &__current-route {
+    font-size: 14px;
+    @include font-weight($weight: semibold);
+    color: #2B2B65;
+    margin: 0;
+  }
+
+  &__border {
+    border-bottom: 2px solid map-get($map: $bgColors, $key: gray-general_light);
+    margin-top: 20px;
+    width: 100%;
+  }
+}
+
+.icon-left--row {
+  color: map-get($map: $bgColors, $key: gray-general);
+  font-size: 14px;
+  margin-right: 10px;
+}

@@ -1,0 +1,84 @@
+@use '../../../../../styles.scss' as *;
+
+$success: map-get(
+  $map: $bgColors,
+  $key: issues-success,
+);
+$warning: map-get(
+  $map: $bgColors,
+  $key: issues-warning,
+);
+$error: map-get(
+  $map: $bgColors,
+  $key: issues-error,
+);
+$maintenance: map-get(
+  $map: $bgColors,
+  $key: issues-maintenance,
+);
+$failure: map-get(
+  $map: $bgColors,
+  $key: general-failure,
+);
+$gray: map-get(
+  $map: $bgColors,
+  $key: gray-general,
+);
+$light: map-get(
+  $map: $bgColors,
+  $key: light-general,
+);
+
+.status__icon {
+  width: 20px;
+  height: 20px;
+  @include flex();
+
+  &-global{
+    width: inherit;
+    height: inherit;
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  &-other{
+    font-size: 1.5rem;
+    transform: scale(1.1);
+  }
+
+
+
+  &-label {
+    margin-left: -5px;
+    border-radius: 9999px;
+    font-size: $xs_1;
+    @include font-weight($weight: semibold);
+    background-color: $light;
+    box-shadow: 3px 3px 5px rgb(0 0 0 / 0.4);
+  }
+
+  &--success {
+    color: $success;
+  }
+
+  &--warning {
+    color: $warning;
+  }
+
+  &--error {
+    color: $error;
+  }
+
+  &--maintenance {
+    color: $maintenance;
+  }
+
+  &--failure {
+    color: $failure;
+  }
+
+  &--disabled {
+    color: $gray;
+  }
+}
+

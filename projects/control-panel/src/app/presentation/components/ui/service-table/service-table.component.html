@@ -1,0 +1,106 @@
+<!-- Service Table -->
+<div class="table-container">
+  <table class="custom-table">
+    <thead>
+    <tr>
+      <th *ngFor="let column of columns">{{ column.label }}</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let row of getPaginatedData()">
+      <td *ngFor="let column of columns"
+          [class.service-column]="column.property === 'serviceName' && columns[0].property === 'serviceName'"
+      >
+        <!-- Service column with controls -->
+        <ng-container *ngIf="column.property === 'serviceName'">
+          <span>{{ row[column.property] }}</span>
+
+          <app-service-control-buttons [buttons]="['restart', 'start', 'stop']" [controlButtonStyle]="true"
+                                       (startClick)="startService($event)" (restartClick)="restartService($event)"
+                                       (stopClick)="stopService($event)" [serviceData]="row"
+          />
+        </ng-container>
+
+        <!-- Status column -->
+        <ng-container *ngIf="column.property === 'status'">
+          <div class="status-container"
+               [class.summary-status]="tableType === 'serviceSummary' || tableType === 'serviceRegistry'"
+          >
+            <div class="status-icon">
+              <app-status-icon [type]="row[column.property]" />
+            </div>
+
+            <!-- Display statusSummary only for the summary or registry table -->
+            <span *ngIf="tableType === 'serviceSummary' || tableType === 'serviceRegistry'" class="status-summary">
+                {{ row['statusSummary'] || '' }}
+              </span>
+          </div>
+        </ng-container>
+
+        <!-- Terminal column -->
+        <ng-container *ngIf="column.property === 'terminal'">
+          <app-service-control-buttons [buttons]="['terminal']" [controlButtonStyle]="false"
+                                       (terminalClick)="openTerminal($event)" [serviceData]="row"
+          />
+        </ng-container>
+
+        <!-- RunLog column -->
+        <ng-container *ngIf="column.property === 'runLog'">
+          <app-service-control-buttons [buttons]="['runLog']" [controlButtonStyle]="false"
+                                       (runLogClick)="viewRunLog($event)" [serviceData]="row"
+          />
+        </ng-container>
+
+        <!-- Observation column -->
+        <ng-container *ngIf="column.property === 'observation'">
+          <app-service-control-buttons [buttons]="['observation']" [controlButtonStyle]="false"
+                                       (observationClick)="showObservation($event)" [serviceData]="row"
+          />
+        </ng-container>
+
+        <!-- Other standard columns -->
+        <ng-container *ngIf="
+              column.property !== 'serviceName' &&
+              column.property !== 'status' &&
+              column.property !== 'terminal' &&
+              column.property !== 'runLog' &&
+              column.property !== 'observation'
+          ">
+          {{ row[column.property] }}
+        </ng-container>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Table Pagination -->
+<div class="table-pagination" *ngIf="pagination">
+  <button class="table-pagination__arrow table-pagination__arrow--prev" [disabled]="pagination.currentPage === 1"
+          (click)="changePage(pagination.currentPage - 1)"
+  >
+    <ngx-spad-icon-component>
+      <i class="icon-left-row"></i>
+    </ngx-spad-icon-component>
+  </button>
+
+  <div class="table-pagination__numbers">
+    <button class="table-pagination__number" *ngFor="let page of getPageNumbers()"
+            [class.active]="page === pagination.currentPage" (click)="changePage(page)"
+    >
+      {{ page }}
+    </button>
+  </div>
+
+  <button class="table-pagination__arrow table-pagination__arrow--next"
+          [disabled]="pagination.currentPage === getTotalPages()" (click)="changePage(pagination.currentPage + 1)"
+  >
+    <ngx-spad-icon-component>
+      <i class="icon-right-row"></i>
+    </ngx-spad-icon-component>
+  </button>
+</div>
+
+
+<app-modal *ngIf="isOpenModal" (closeModal)="toggleModal()"/>

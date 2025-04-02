@@ -1,0 +1,111 @@
+@use "../../../../../styles" as *;
+
+:host {
+  // Utilizamos una clase en lugar de v-bind
+  &.control-button-true {
+    .control-actions__button {
+      @include action-button($control-button: true);
+    }
+  }
+
+  &.control-button-false {
+    .control-actions__button {
+      @include action-button($control-button: false);
+    }
+  }
+}
+
+.control-actions {
+  @include flex($space: 11px);
+
+  &__button--start {
+    &::before {
+      content: "Iniciar";
+    }
+  }
+
+  &__button--restart {
+    &::before {
+      content: "Reiniciar";
+    }
+  }
+
+  &__button--stop {
+    &::before {
+      content: "Detener";
+    }
+  }
+
+  &__button--terminal {
+    &::before {
+      content: "Terminal";
+    }
+  }
+
+  &__button--runLog {
+    &::before {
+      content: "RunLog";
+    }
+  }
+
+  &__icon--active {
+    i {
+      background-image: linear-gradient(151deg, rgba(29, 112, 182, 1) 2.92%, rgba(53, 167, 223, 1) 39.7%,
+        rgba(29, 112, 182, 1) 74.38%, rgba(43, 43, 101, 1) 99.07%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 16px;
+      @include font-weight($weight: medium);
+    }
+  }
+
+  &__icon--disabled {
+    cursor: not-allowed;
+
+    i {
+      // Gradiente gris para botones deshabilitados
+      background-image: linear-gradient(151deg, rgba(29, 112, 182, 0.5) 2.92%, rgba(53, 167, 223, 0.5) 39.7%,
+        rgba(29, 112, 182, 0.5) 74.38%, rgba(43, 43, 101, 0.5) 99.07%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 16px;
+      @include font-weight($weight: medium);
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  // Estilos para el tipo terminal
+  &__icon--terminal {
+    i {
+      color: #B2B2B2; // Color sólido para terminal
+      font-size: 22px;
+      @include font-weight($weight: medium);
+    }
+  }
+
+  // Estilos para el tipo runLog
+  &__icon--runlog {
+    i {
+      color: #BBBAB9; // Color sólido para runLog
+      font-size: 19px;
+      @include font-weight($weight: medium);
+    }
+  }
+
+  // Estilos para el tipo observation
+  &__icon--observation {
+    i {
+      color: #B2B2B2; // Color sólido para observation
+      font-size: 20px;
+      @include font-weight($weight: medium);
+    }
+  }
+}

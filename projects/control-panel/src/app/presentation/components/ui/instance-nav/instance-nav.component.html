@@ -1,0 +1,18 @@
+<div class="sidebar" >
+  <nav class="sidebar__content">
+    <button class="sidebar__toggle-btn" (click)="toggleSidebar()"><span>Instancias</span> <ngx-spad-icon-component> <i
+          class="icon-up-row"></i></ngx-spad-icon-component> </button>
+    <ul class="sidebar__options" *ngIf="isMenuOpen">
+      <li class="sidebar__item" *ngFor="let item of menu" [class.sidebar__item-active]="isActiveInstance === item.label" >
+        <a class="sidebar__item--link" [routerLink]="[item.route]" (click)="toggleInstanceName(item.label)">
+          <span class="sidebar__item--link-label">{{ item.label }}</span>
+          <ngx-spad-icon-component >
+            <i class="sidebar__item--link-{{item.icon}} icon-cp-{{item.icon}}"></i>
+          </ngx-spad-icon-component>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <hr class="line-wrapper" />
+</div>

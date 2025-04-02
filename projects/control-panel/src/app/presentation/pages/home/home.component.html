@@ -1,0 +1,23 @@
+<div class="dashboard-wrapper" >
+
+  <div class="dashboard-wrapper__container" >
+    <p>
+      Panel de Control - Instancias
+    </p>
+    <div class="container-wrapper">
+      <ng-container *ngFor="let item of currentInstances() | keyvalue: statusOrder">
+        <app-instance-card *ngFor="let instance of item.value" [instanceName]="instance.name" [status]="instance.status" [system]="instance.system" [services]="instance.services" [lastActivity]="instance.lastActivity" />
+      </ng-container>
+    </div>
+  </div>
+
+
+  <div class="container-indicators" *ngIf="pagesRange.length > 1">
+    <button
+      *ngFor="let page of pagesRange"
+      class="container-indicators__indicator"
+      [class.container-indicators__indicator--active]="page === indicators.currentPage"
+      (click)="setInstance(page)">
+    </button>
+  </div>
+</div>
