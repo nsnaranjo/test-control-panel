@@ -99,10 +99,25 @@ export class AuthService {
   private finalizeLogout() {
     this.oAuthService.logOut(true);
 
+    // Limpiar el almacenamiento
     sessionStorage.clear();
     localStorage.clear();
 
-    this.invalidateHistory();
+    // Establecer una marca de tiempo para el cierre de sesión
+    sessionStorage.setItem('auth_logout_time', Date.now().toString());
+    
+    // Establecer un estado en el historial para prevenir navegación hacia atrás
+    try {
+      history.replaceState(
+        { authLoggedOut: true, timestamp: Date.now() },
+        document.title,
+        window.location.href
+      );
+    } catch (e) {
+      console.error('Error al modificar historial:', e);
+    }
+
+    // Redirigir a la página principal
     window.location.href = 'https://spad.com.co/';
   }
 

@@ -39,6 +39,19 @@ export class AuthHistoryService {
   }
 
   private handlePopState(event: PopStateEvent): void {
+    // Verificar si hay un tiempo de cierre de sesión registrado
+    const logoutTime = sessionStorage.getItem('auth_logout_time');
+    if (logoutTime) {
+      const timeSinceLogout = Date.now() - parseInt(logoutTime, 10);
+      // Si el logout fue hace menos de 5 minutos, prevenir la navegación
+      if (timeSinceLogout < 300000) {
+        event.preventDefault();
+        history.forward();
+        this.authService.initiateAuthFlow();
+        return;
+      }
+    }
+
     // Si hay estado y muestra que se cerró sesión
     if (event?.state?.authLoggedOut) {
       // Prevenir la navegación hacia atrás
