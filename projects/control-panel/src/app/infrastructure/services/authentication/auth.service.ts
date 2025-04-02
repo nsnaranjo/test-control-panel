@@ -75,17 +75,15 @@ export class AuthService {
         return false;
       }
 
-      // Si tenemos un token válido, actualizar el estado y redirigir a loading
+      // Si tenemos un token válido, actualizar el estado
       this.authStateSubject.next(true);
-      await this.router.navigateByUrl('/loading');
       return true;
     } catch (error) {
       console.error('Error en el flujo de autenticación:', error);
-      // En caso de error, limpiar el estado y redirigir a la página principal
+      // En caso de error, limpiar el estado
       this.oAuthService.logOut(true);
       sessionStorage.clear();
       localStorage.clear();
-      window.location.href = 'https://spad.com.co/';
       return false;
     } finally {
       this.authInProgress = false;

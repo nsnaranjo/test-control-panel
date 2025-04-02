@@ -37,7 +37,13 @@ export class AuthGuardService {
       // Si no hay autenticación, iniciar flujo de autenticación
       if (!isAuthenticated) {
         //console.log('AuthGuard: No hay autenticación, iniciando flujo');
-        return await this.initiateAuthFlowUseCase.execute();
+        const authResult = await this.initiateAuthFlowUseCase.execute();
+        if (authResult) {
+          // Si la autenticación fue exitosa, redirigir a loading
+          await this.router.navigateByUrl('/loading');
+          return false;
+        }
+        return false;
       }
 
       const logoutTime = sessionStorage.getItem('auth_logout_time');
@@ -47,7 +53,12 @@ export class AuthGuardService {
         // Si el logout fue hace menos de 5 minutos, reiniciar autenticación
         if (timeSinceLogout < 300000) {
           sessionStorage.removeItem('auth_logout_time');
-          return await this.initiateAuthFlowUseCase.execute();
+          const authResult = await this.initiateAuthFlowUseCase.execute();
+          if (authResult) {
+            await this.router.navigateByUrl('/loading');
+            return false;
+          }
+          return false;
         }
       }
       // Si estamos en la raíz, redirigir a loading
